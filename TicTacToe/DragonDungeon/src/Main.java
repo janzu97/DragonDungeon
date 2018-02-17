@@ -4,6 +4,8 @@ public class Main {
     static Player p=new Player();
    static Controller c=new Controller();
    static boolean selectionmade=false;
+   private static boolean run;
+   static Dragon d=new Dragon();
 	public static void main(String[] args) {
 		Runnable r = new Runnable() {
 			public void run() {
@@ -18,8 +20,11 @@ public class Main {
 		t.start();
 		SReader.read(SReader.ReadFile(new File("res\\dialogue\\Opening.txt")));
 		SReader.read(SReader.ReadFile(new File("res\\dialogue\\BattleOP.txt")));
-		player_choose();
-		
+		while(p.get_HP()>0 && run==true) {
+			d.Attack();
+			p.NIS();
+			player_choose();
+		}
 	}
 	public long getScore(Dragon D) {
 		return D.getScore();
