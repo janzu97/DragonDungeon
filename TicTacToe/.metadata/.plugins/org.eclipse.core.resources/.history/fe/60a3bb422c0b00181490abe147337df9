@@ -1,0 +1,27 @@
+import java.nio.file.Paths;
+
+import javafx.scene.media.*;
+public class SReader {
+	String Readabletext;
+	public static void read(String txt) {
+		long nanotime1=System.nanoTime();
+		long nanotime2=0;
+		AudioClip sc = new AudioClip(Paths.get("res\\sfx\\sfx-typwriter.wav").toUri().toString());
+
+		for(int i=0; i<txt.length(); i++) {
+			char x=txt.charAt(i);
+			System.out.print(x);
+			if(x==','|x=='.') {
+				while(nanotime2-nanotime1<500000000) {
+					nanotime2=System.nanoTime();
+				}
+			}else {
+				while(nanotime2-nanotime1<250000000) {
+					nanotime2=System.nanoTime();
+				}
+			}
+			sc.play();
+			nanotime1=System.nanoTime();
+		}
+	}
+}

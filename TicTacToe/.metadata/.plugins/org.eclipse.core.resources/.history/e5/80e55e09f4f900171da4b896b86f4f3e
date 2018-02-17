@@ -1,0 +1,19 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		Deck d1=new Deck(new Cardlist(1));
+		Deck d2=new Deck(new Cardlist(1));
+		Game g=new Game(d2, d2);
+		
+		g.getHand(2).draw(10);
+		System.out.println(g.getHand(0));
+		System.out.println(g.getHand(2));
+		g.getHand(2).playCard(1, 0);
+		g.getHand(0).playCard(1, 0);
+		System.out.println(g.getHand(2).f.totalStrenght());
+		System.out.println(g.getHand(2));
+		System.out.println(g.getHand(0));
+	}
+
+}

@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Deck {
+	private ArrayList<Card> deck=new ArrayList<Card>();
+
+
+	public void shuffle(){
+		Collections.shuffle(deck);
+	}
+
+
+	public Card Draw(){
+		Card c=deck.get(0);
+		deck.remove(0);
+		return c;
+	
+		}
+	public int cardsLeftinDeck(){
+		return deck.size();
+	}
+
+}

@@ -1,0 +1,10 @@
+
+public class AbilityInterface {
+	public void Activate_effect() {}
+	public void Activate_effect(int target) {
+		
+	}
+	public void Activate_effect(int target,int target2) {
+		
+	}
+}

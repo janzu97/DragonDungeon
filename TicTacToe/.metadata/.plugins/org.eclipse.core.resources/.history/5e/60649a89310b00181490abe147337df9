@@ -1,0 +1,18 @@
+import java.io.File;
+
+import javafx.scene.media.*;
+public class Musicplayer {
+	String musicFile = "res\\bgm\\boootiful.mp3";     // For example
+
+Media sound = new Media(new File(musicFile).toURI().toString());
+MediaPlayer mediaPlayer = new MediaPlayer(sound);
+public static void playSong() {
+	String musicFile = "res\\bgm\\boootiful.mp3";     // For example
+
+	Media sound = new Media(new File(musicFile).toURI().toString());
+	MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+	mediaPlayer.play();
+	
+}
+}

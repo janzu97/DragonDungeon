@@ -1,0 +1,19 @@
+
+public class AnimationProcessor {
+	static String [] frames= {"                        <\")\r\n" + 
+			"                        ( >\\\r\n" + 
+			"                         \" \\\\\r\n" + 
+			"                            \\  ","                        <\")\r\n" + 
+					"                        ( >\\\r\n" + 
+					"                         \" \\\\\r\n" + 
+	"                            \\  "};
+	static int frame=1;
+	public static String getframe() {
+		frame++;
+		if(frame-1<frames.length) {
+			frame=1;
+		}
+		return frames[frame-1];
+	}
+
+}

@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+
+public class Dragon {
+	int HP=Integer.MAX_VALUE;
+	int MaxHp=Integer.MAX_VALUE;
+	double armor=1.00;
+	
+	public void takeDamage(int Amount) {
+		HP-=(int)Amount*armor;
+	}
+	public int getScore() {
+		return MaxHp-HP;
+	}
+}

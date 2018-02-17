@@ -1,0 +1,14 @@
+
+public class SReader {
+	String Readabletext;
+	public static void read(String txt) {
+		for(int i=0; i<=txt.length(); i++) {
+			System.out.print(txt.charAt(i));
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

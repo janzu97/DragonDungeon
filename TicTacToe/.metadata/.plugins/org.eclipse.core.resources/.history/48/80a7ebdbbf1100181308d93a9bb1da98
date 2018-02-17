@@ -1,0 +1,30 @@
+
+public class Matrix {
+	
+	public static int[][] Multiply(int[][] x,int[][] y){
+		int[][] z=new int [x.length][y[0].length];
+		for (int i=0; i<x.length; i++) {
+			for(int k=0; k<y[0].length; k++) {
+				z[i][k]=x[i][k]+y[i][k];
+			}
+			
+		}
+		
+		return z;
+		
+		
+		
+	}
+	
+	public static String MatrixToString(int[][] x) {
+		String s="";
+		for(int[] i: x) {
+			for(int k:i) {
+				s+=k+" ";
+				
+			}
+			s+="\n";
+		}
+		return s;
+	}
+}

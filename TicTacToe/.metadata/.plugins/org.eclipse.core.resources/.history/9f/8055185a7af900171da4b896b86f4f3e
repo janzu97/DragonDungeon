@@ -1,0 +1,20 @@
+
+public class Card {
+	private String name;
+	private int power;
+	private int aID;
+	public Card(String n,int p,int a){
+		this.name=n;
+		this.power=p;
+		this.aID=a;
+	}
+	public String getName(){
+		return this.name;
+	}
+	public int getPower(){
+		return this.power;
+	}
+	public int getAbility(){
+		return this.aID;
+	}
+}
