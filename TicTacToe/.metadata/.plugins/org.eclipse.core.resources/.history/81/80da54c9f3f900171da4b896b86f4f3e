@@ -1,9 +1,0 @@
-
-public class Game {
-	Hand h1;
-	Hand h2;
-	public Game(Deck d,Deck d2) {
-		h1=new Hand(d, new Field());
-		h2=new Hand(d2,new Field());
-	}
-}

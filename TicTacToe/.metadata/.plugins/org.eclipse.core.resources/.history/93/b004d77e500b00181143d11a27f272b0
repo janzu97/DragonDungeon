@@ -1,6 +1,0 @@
-
-public class Player {
-	int HP;
-	int MP;
-	String name;
-}
