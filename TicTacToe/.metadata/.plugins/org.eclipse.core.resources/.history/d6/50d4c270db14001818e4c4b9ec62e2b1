@@ -1,0 +1,16 @@
+
+public class Attack {
+	String name="";
+	int A_ID=0;
+	public void activate(int A_ID,Object target,int target2) {}
+}
+class EarthshatteringStomp extends Attack{
+
+@Override
+public void activate(int A_ID, int target, int target2) {
+	if(RNG.roll(20)) {
+	p.takeDamage(990);
+}else {	
+}
+	
+}} 

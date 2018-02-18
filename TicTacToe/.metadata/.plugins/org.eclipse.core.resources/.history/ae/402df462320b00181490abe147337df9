@@ -1,0 +1,24 @@
+import java.io.File;
+
+import javafx.scene.media.*;
+import javafx.stage.Stage;
+import javafx.application.*;
+public class Musicplayer extends Application{
+	String musicFile = "res\\bgm\\boootiful.mp3";     // For example
+
+Media sound = new Media(new File(musicFile).toURI().toString());
+MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+
+
+public static void playSong() {
+
+}
+@Override
+public void start(Stage arg0) throws Exception {
+
+
+	mediaPlayer.play();
+		
+}
+}

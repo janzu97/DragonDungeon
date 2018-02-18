@@ -1,0 +1,17 @@
+
+public class SReader {
+	String Readabletext;
+	public static void read(String txt) {
+		long nanotime1=System.nanoTime();
+		long nanotime2=0;
+		
+		
+		for(int i=0; i<txt.length(); i++) {
+			System.out.print(txt.charAt(i));
+			while(nanotime1-nanotime2<1000000) {
+				nanotime2=System.nanoTime();
+			}
+			nanotime1=System.nanoTime();
+		}
+	}
+}

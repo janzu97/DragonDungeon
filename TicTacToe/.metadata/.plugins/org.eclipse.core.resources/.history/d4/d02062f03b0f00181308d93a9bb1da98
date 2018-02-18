@@ -1,0 +1,7 @@
+
+public class Item {
+	int A_ID;
+	public void activateEffect() {
+		
+	}
+}

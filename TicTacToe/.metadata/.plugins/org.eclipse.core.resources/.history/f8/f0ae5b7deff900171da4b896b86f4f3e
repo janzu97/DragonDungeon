@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+
+public class Hand {
+	private ArrayList<Card> hand=new ArrayList<Card>();
+	private Deck d;
+	Field f;
+	public Hand(Deck deck,Field fe) {
+		d=deck;
+		f=fe;
+	}
+	
+	
+	
+	public void draw(int n) {
+		for(int i=0; i<n; i++){
+			if(d.cardsLeftinDeck()!=0) {
+				hand.add(d.Draw());
+			}
+		}
+	}
+	@Override
+	public String toString() {
+		String op="";
+		for(Card i:hand) {
+			op+=i.toString();
+		}
+		return op;
+	}
+	public void playCard(int lane,int i){
+		Card c=hand.get(i);
+		hand.remove(i);
+		f.playCard(lane, c);
+	
+	}
+}

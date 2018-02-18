@@ -1,0 +1,29 @@
+import java.io.File;
+import javafx.concurrent.*;
+import java.nio.file.Paths;
+
+import javafx.scene.media.*;
+public class Musicplayer {
+
+
+
+public static void playSong() {
+	 Task task=new Task() {
+
+		@Override
+		protected Object call() throws Exception {
+			AudioClip sc = new AudioClip(Paths.get("res\\bgm\\suspense.wav").toUri().toString());
+			System.out.println("Fuck you");
+			sc.play();
+			
+			return null;
+		}
+		
+		
+	};
+		   Thread thread = new Thread(task);
+		   System.out.println("Fuck you"); 
+		   thread.start();
+
+}
+}

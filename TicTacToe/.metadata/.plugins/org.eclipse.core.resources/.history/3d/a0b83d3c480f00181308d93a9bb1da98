@@ -1,0 +1,10 @@
+
+public class effectInterface {
+	public void Activate_effect() {}
+	public void Activate_effect(int A_ID, int target) {
+		
+	}
+	public void Activate_effect(int A_ID,int target,int target2) {
+		
+	}
+}
