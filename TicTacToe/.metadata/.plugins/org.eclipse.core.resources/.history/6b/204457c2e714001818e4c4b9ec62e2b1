@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import javafx.scene.media.*;
 public class SReader {
-	String Readabletext;
+    String Readabletext;
 
 	public static String ReadFile(File f) {
 		String text = "";
@@ -63,7 +63,7 @@ public class SReader {
 				result+="<";
 			}
 			result +="\n";
-
+			
 		}
 		return result;
 	}

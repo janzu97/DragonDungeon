@@ -103,7 +103,6 @@ public class Main {
 	}
 	public static void chose_Item() {
 		selectionmade=false;
-		c.setMAX_loc(p.getSpells().length+1);
 		while(!selectionmade) {
 			try {
 				Thread.sleep(50);
@@ -117,7 +116,6 @@ public class Main {
 	}
 	public static void chose_run() {
 		selectionmade=false;
-		c.setMAX_loc(3);
 		while(!selectionmade) {
 			try {
 				Thread.sleep(50);

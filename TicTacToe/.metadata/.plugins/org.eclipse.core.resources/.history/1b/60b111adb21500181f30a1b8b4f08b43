@@ -117,7 +117,6 @@ public class Main {
 	}
 	public static void chose_run() {
 		selectionmade=false;
-		c.setMAX_loc(3);
 		while(!selectionmade) {
 			try {
 				Thread.sleep(50);
