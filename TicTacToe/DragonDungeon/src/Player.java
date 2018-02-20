@@ -33,11 +33,21 @@ public class Player extends Targetable{
 	public String getname() {
 		return name;
 	}
-	public void lightAttack() {
-
+	public void lightAttack(Targetable t) {
+		SReader.read("You launch into a quick attack.\n");
+		if(RNG.roll(80)) {
+			t.takeDamage(20);
+		}else {
+			SReader.read("But you misssed.");
+		}
 	}
-	public void heavyAttack() {
-
+	public void heavyAttack(Targetable t) {
+		SReader.read("You bring down your sword on the dragon with all your might\n");
+		if(RNG.roll(60)) {
+			t.takeDamage(90);
+		}else {
+			SReader.read("But you misssed.");
+		}
 	}
 	public int get_HP() {
 		return HP;

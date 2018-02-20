@@ -7,7 +7,9 @@ public class Dragon extends Targetable{
 	double armor=1.00;
 	@Override
 	public void takeDamage(int amount) {
-		HP-=(int)amount/armor;
+		int dmg=(int)(amount/armor);
+		HP-=dmg;
+		SReader.read("Dragon took "+dmg+" damage.");
 	}
 	public long getScore() {
 		return MaxHp-HP;

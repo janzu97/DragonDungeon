@@ -72,9 +72,12 @@ public class Main {
 			SReader.update(SReader.GenerateMenu(options,c));
 		}
 		switch(c.get_Location()) {
-		case 1 : p.heavyAttack();
-		case 2 : p.lightAttack();
+		case 1 : p.heavyAttack(d);
+		break;
+		case 2 : p.lightAttack(d);
+		break;
 		case 3 : player_choose();
+		break;
 		}
 	}
 	public static void chose_magic() {
@@ -113,6 +116,11 @@ public class Main {
 			SReader.update(SReader.GenerateMenu(p.i.getInventoryforMenu(),c));
 
 
+		}
+		if(c.get_Location()<p.i.items.size()) {
+			p.i.items.get(c.get_Location()-1).activateEffect();;
+		}else {
+			player_choose();
 		}
 	}
 	public static void chose_run() {

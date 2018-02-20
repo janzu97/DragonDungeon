@@ -54,6 +54,9 @@ public class SReader {
 
 			nanotime1=System.nanoTime();
 		}
+		while(nanotime2-nanotime1<300000000) {
+			nanotime2=System.nanoTime();
+		}
 	}
 	public static String GenerateMenu(String[] options,Controller c) {
 		String result="";
