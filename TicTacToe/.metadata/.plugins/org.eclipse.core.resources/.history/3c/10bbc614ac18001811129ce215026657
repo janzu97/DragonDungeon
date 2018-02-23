@@ -1,0 +1,58 @@
+
+public interface Attack {
+
+
+	public void activate( Targetable target, Targetable target2);
+	public void GiveDescription();
+	public String getName();
+
+}
+class EarthshatteringStomp implements Attack{
+	String name="Earth shattering Stomp";
+	@Override
+	public void activate( Targetable target, Targetable target2) {
+		if(RNG.roll(20)) {
+			target2.takeDamage(990);
+		}else {	
+		}
+
+	}
+	@Override
+	public void GiveDescription() {
+	}
+	@Override
+	public String getName() {
+		return name;
+	}
+
+
+} 
+class Invigorating_Shout implements Attack {
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+		SReader.read("You feel adrenalin rushing through your veins,\n");
+		if(target.getmaxhp()>=990+target.get_HP()) {
+			target.takemagicDamage(-990);
+			SReader.read(990+" Hp recovered\n");
+		}else {
+			SReader.read(1000-target.get_HP()+" Hp recovered\n");
+
+			target.takemagicDamage(-(1000-target.get_HP()));
+		}
+		
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Invigorating shout";
+	}
+	
+}

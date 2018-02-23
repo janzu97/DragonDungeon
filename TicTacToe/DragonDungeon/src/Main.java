@@ -15,17 +15,19 @@ public class Main {
 		};
 		Musicplayer.playSong();
 		p.setName();
+		p.addSpell(new Invigorating_Shout());
 
 		Thread t=new Thread(r);
 		t.start();
 		SReader.read(SReader.ReadFile(new File("res\\dialogue\\Opening.txt")));
 		SReader.read(SReader.ReadFile(new File("res\\dialogue\\BattleOP.txt")));
-		while(p.get_HP()>0 && run==true) {
-			System.out.println("RoundHappened");
-			d.Attack(0);
-			p.NIS();
+		do{
 			player_choose();
-		}
+			d.DoRandomAttack(p);
+			
+		}while (d.get_HP()>0 && p.get_HP()>0 && run==true);
+		SReader.read("\nGame over");
+		System.exit(0);
 	}
 	public long getScore(Dragon D) {
 		return D.getScore();
@@ -41,8 +43,8 @@ public class Main {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			SReader.update(SReader.GenerateMenu(options,c));
-
+			SReader.update(p.name+" HP "+p.getHpbar()+"\n"+p.name+" MP "+p.getMPbar()+"\n"+SReader.GenerateMenu(options,c));
+			
 		}
 		if(c.get_Location()==1) {
 			chose_melee();
@@ -132,6 +134,7 @@ public class Main {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
 			SReader.update(SReader.GenerateMenu(new String[]{"QUIT AND SAVE","QUIT WHITHOUT SAVING","CANSEL"},c));
 
 		}

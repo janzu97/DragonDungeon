@@ -33,6 +33,6 @@ public class Inventory {
 		}
 		List[items.size()]="BACK";
 		return List;
-		
+
 	}
 }

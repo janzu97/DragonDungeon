@@ -1,0 +1,19 @@
+import java.util.Random;
+
+public class RNG {
+	public static int rint(int range) {
+		Random r=new Random();
+		return r.nextInt(range);
+	}
+	public static boolean roll(int chance) {
+		Random r=new Random();
+
+		if(r.nextInt(100)<100-chance) {
+			return true;
+		}else {
+			return false;
+		}
+
+
+	}
+}

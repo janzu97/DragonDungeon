@@ -10,7 +10,7 @@ public class MyTimer {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 }

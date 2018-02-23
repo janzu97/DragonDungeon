@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class Dragon extends Targetable{
+public class Dragon implements Targetable{
 	ArrayList<Attack> attacks=new ArrayList<Attack>();
-	long HP=Integer.MAX_VALUE;
-	long MaxHp=Integer.MAX_VALUE;
-	double armor=1.00;
+	int HP=Integer.MAX_VALUE;
+	int MaxHp=Integer.MAX_VALUE;
+	double armor=20;
 	@Override
 	public void takeDamage(int amount) {
 		int dmg=(int)(amount/armor);
@@ -15,32 +15,65 @@ public class Dragon extends Targetable{
 		return MaxHp-HP;
 	}
 	public void Attack(int A_ID) {
-		
-		
+
+
+	}
+	@Override
+	public int get_HP() {
+		return HP;
 	}
 	public void EarthshatteringStomp(Player p){
+		SReader.read("\nDragon tries to step on you with its entire weight,");
 		if(RNG.roll(20)) {
-		p.takeDamage(990);
-	}else {
-		
-		
-	}}
+			SReader.read("\nIt's a devastating blow ");
+			p.takeDamage(990);
+		}else {
+			SReader.read("But it missed.");
+
+		}}
 	public void DoRandomAttack(Player t){
+		switch(RNG.rint(3)) {
+		case 0 : InfernalFlames(t);
+		break;
+		case 1 : DraconicFrenzy(t);
+		break;
+		case 2 : EarthshatteringStomp(t);
+		break;
 		
+		}
 	}
 	public void InfernalFlames(Player p) {
-		p.takeMagicDamage(400);
+	
+		p.takemagicDamage(400);
+		SReader.read("\nA blazing wall of fire erupts from the dragons mouth,\n you took 400 magic damage.");
 	}	
 	public void DraconicFrenzy(Player p) {
+		SReader.read("Dragon jumps into a furious onslaught,\n");
 		if(RNG.roll(60)) {
 			p.takeDamage(590);
-		}else {
 			
+			
+		}else {
+			SReader.read("But it missed.");	
 			
 		}	
 	}
 	public void Attack(Player p) {
+
+	}
+	@Override
+	public void useMana(int a) {
+		// TODO Auto-generated method stub
 		
 	}
-	
+	@Override
+	public int getmaxhp() {
+		// TODO Auto-generated method stub
+		return Integer.MAX_VALUE;
+	}
+	@Override
+	public void takemagicDamage(int i) {
+		this.HP-=i;
+	}
+
 }

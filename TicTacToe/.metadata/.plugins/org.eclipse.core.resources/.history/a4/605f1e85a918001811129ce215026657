@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+public class Dragon extends Targetable{
+	ArrayList<Attack> attacks=new ArrayList<Attack>();
+	long HP=Integer.MAX_VALUE;
+	long MaxHp=Integer.MAX_VALUE;
+	double armor=20;
+	@Override
+	public void takeDamage(int amount) {
+		int dmg=(int)(amount/armor);
+		HP-=dmg;
+		SReader.read("Dragon took "+dmg+" damage.");
+	}
+	public long getScore() {
+		return MaxHp-HP;
+	}
+	public void Attack(int A_ID) {
+
+
+	}
+	@Override
+	public int get_HP() {
+		return this.Hp;
+	}
+	public void EarthshatteringStomp(Player p){
+		if(RNG.roll(20)) {
+			p.takeDamage(990);
+			SReader.read("\nA blazing");
+		}else {
+
+
+		}}
+	public void DoRandomAttack(Player t){
+		switch(RNG.rint(2)) {
+		case 0 : InfernalFlames(t);
+		break;
+		case 1 : DraconicFrenzy(t);
+		break;
+		case 2 : EarthshatteringStomp(t);
+		break;
+		
+		}
+	}
+	public void InfernalFlames(Player p) {
+	
+		p.takemagicDamage(400);
+		SReader.read("\nA blazing wall of fire erupts from the dragons mouth,\n you took 400 magic damage.");
+	}	
+	public void DraconicFrenzy(Player p) {
+		if(RNG.roll(60)) {
+			p.takeDamage(590);
+			SReader.read("\nA blazing");
+		}else {
+			
+
+		}	
+	}
+	public void Attack(Player p) {
+
+	}
+
+}

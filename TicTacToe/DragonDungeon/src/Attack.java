@@ -3,8 +3,6 @@ public interface Attack {
 
 
 	public void activate( Targetable target, Targetable target2);
-	// TODO Auto-generated method stub
-
 	public void GiveDescription();
 	public String getName();
 
@@ -21,14 +19,62 @@ class EarthshatteringStomp implements Attack{
 	}
 	@Override
 	public void GiveDescription() {
-		// TODO Auto-generated method stub
-
 	}
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
 
-} 
+}
+class Fireball implements Attack {
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
+
+class Invigorating_Shout implements Attack {
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+		SReader.read("You feel adrenalin rushing through your veins,\n");
+		if(target.getmaxhp()>=990+target.get_HP()) {
+			target.takemagicDamage(-990);
+			SReader.read(990+" Hp recovered\n");
+		}else {
+			SReader.read(1000-target.get_HP()+" Hp recovered\n");
+
+			target.takemagicDamage(-(1000-target.get_HP()));
+		}
+		target.useMana(100);
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Invigorating shout";
+	}
+
+}

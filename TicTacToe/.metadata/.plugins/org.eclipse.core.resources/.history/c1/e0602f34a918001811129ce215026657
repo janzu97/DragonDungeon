@@ -1,0 +1,19 @@
+
+abstract class Targetable {
+	int maxhp;
+	int Hp;
+	public void takeDamage(int amount) {
+	}
+	
+	public int getmaxhp() {
+		return maxhp;
+	}
+	public int get_HP() {
+		return Hp;
+	}
+
+	public void takemagicDamage(int i) {
+		
+		
+	}
+}
