@@ -30,7 +30,7 @@ class MagicalEssence implements Item{
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink a vial of MagicalEssence.\n");
 		if(target.getmaxMp()<target.getMp()+200) {
-			target.setMP(target.getmaxhp());
+			target.setMP(target.getmaxMp());
 			SReader.read("Your mana is now full.\n");
 		}else {
 			target.setMP(target.getMp()+200);

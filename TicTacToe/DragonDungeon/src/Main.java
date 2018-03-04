@@ -126,7 +126,7 @@ public class Main implements Serializable{
 	}
 	public static void chose_Item() {
 		selectionmade=false;
-		c.setMAX_loc(p.getInventory().length+1);
+		c.setMAX_loc(p.getInventory().length);
 		while(!selectionmade) {
 			try {
 				Thread.sleep(50);
