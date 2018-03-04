@@ -7,14 +7,46 @@ public interface Attack {
 	public String getName();
 
 }
-class EarthshatteringStomp implements Attack{
-	String name="Earth shattering Stomp";
+class PoisonCloud implements Attack{
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+		SReader.read("You create some poisonous mist.\n");
+		if(RNG.roll(64)) {
+			target2.takemagicDamage(210);
+			target2.poisoned();
+			SReader.read("Dragon was poisoned");
+		}else {
+			target2.takemagicDamage(80);
+		}
+		
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Poison cloud";
+	}
+	
+}
+class Blizzard implements Attack{
+	String name="Blizzard";
 	@Override
 	public void activate( Targetable target, Targetable target2) {
-		if(RNG.roll(20)) {
-			target2.takeDamage(990);
+		SReader.read("You try to summon a icy storm around the dragon\n");
+		if(RNG.roll(50)) {
+			target2.takemagicDamage(990);
+			target2.setFrozen(new Freeze(2));
 		}else {	
+			SReader.read("but you failed the spell\n");
 		}
+		target.useMana(200);
 
 	}
 	@Override
@@ -27,11 +59,17 @@ class EarthshatteringStomp implements Attack{
 
 
 }
-class Fireball implements Attack {
+class Inferno implements Attack {
 
 	@Override
 	public void activate(Targetable target, Targetable target2) {
-		// TODO Auto-generated method stub
+		SReader.read("You cast blaze of fire at dragon\n");
+		if(RNG.roll(40)) {
+			target2.takemagicDamage(650);
+		}else {
+			SReader.read("but you missed\n");
+		}
+		target.useMana(90);
 		
 	}
 
@@ -43,8 +81,7 @@ class Fireball implements Attack {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Inferno";
 	}
 	
 }
@@ -73,7 +110,6 @@ class Invigorating_Shout implements Attack {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Invigorating shout";
 	}
 

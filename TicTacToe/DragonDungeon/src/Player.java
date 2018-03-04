@@ -9,17 +9,40 @@ public class Player implements Targetable{
 	int MP=1000;
 	int Max_mp=1000;
 	int MAX_HP=1000;
+	Freeze frozen;
 	Inventory i;
+	boolean poison;
 	double armor=1.00;
 	String name="";
 	public Player() {
 		this.i=new Inventory();
+		i.addItem(new BagOfSalt());
+		i.addItem(new MagicalEssence());
+		i.addItem(new MagicalEssence());
+		i.addItem(new PotionOfInvigoration());
+	}
+	public String[] getInventory() {
+		return i.getInventory();
 	}
 	public Player(Inventory I) {
 		this.i=I;
 	}
 	public void addSpell(Attack a){
 		Spells.add(a);
+	}
+	public void setFrozen(Freeze f) {
+		frozen=f;
+		
+	}
+	public void poisoned() {
+		poison=true;
+		SReader.read("You got poisoned!\n");
+	}
+	public double getArmor() {
+		return armor;
+	}
+	public void setArmor(double armor) {
+		this.armor=armor;
 	}
 	
 
@@ -44,7 +67,7 @@ public class Player implements Targetable{
 		if(RNG.roll(80)) {
 			t.takeDamage(20);
 		}else {
-			SReader.read("But you misssed.");
+			SReader.read("But you misssed.\n");
 		}
 	}
 	public void heavyAttack(Targetable t) {
@@ -52,7 +75,7 @@ public class Player implements Targetable{
 		if(RNG.roll(60)) {
 			t.takeDamage(90);
 		}else {
-			SReader.read("But you misssed.");
+			SReader.read("But you misssed.\n");
 		}
 	}
 	@Override
@@ -82,8 +105,18 @@ public class Player implements Targetable{
 	}
 	@Override
 	public void takeDamage(int amount) {
+		if(poison) {
+			HP-=amount*armor*2;
+			SReader.read("You took "+amount*armor*2+" damage\n");
+			if(RNG.roll(70)) {
+				poison=false;
+				SReader.read("Poison lost it's effect on you\n");
+			}
+
+		}else {
 		HP-=amount*armor;
-		SReader.read("You took "+amount*armor+" damage");
+		SReader.read("You took "+amount*armor+" damage\n");
+		}
 	}
 	@Override
 	public void takemagicDamage(int amount) {
@@ -127,5 +160,18 @@ public class Player implements Targetable{
 	@Override
 	public void useMana(int a) {
 		MP-=a;
+	}
+	@Override
+	public int getMp() {
+		return MP;
+	}
+	@Override
+	public int getmaxMp() {
+		return Max_mp;
+	}
+	@Override
+	public void setMP(int mp) {
+		this.MP=mp;
+		
 	}
 }

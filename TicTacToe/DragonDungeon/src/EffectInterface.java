@@ -7,10 +7,7 @@ public class EffectInterface {
 
 	}
 }
-class Poison extends EffectInterface{
-	public Poison() {
-		}
-}
+
 class Freeze extends EffectInterface{
 	int rounds;
 	public Freeze(int r) {

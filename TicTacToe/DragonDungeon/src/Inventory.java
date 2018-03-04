@@ -8,11 +8,19 @@ public class Inventory {
 	public void sortItems() {
 		Collections.sort(items, Collator.getInstance());
 	}
+	public void addItem(Item i) {
+		items.add(i);
+	}
+	public Item getItem(int i) {
+		return items.get(i);
+	}
+	
+	
 	public void activate_Item(Item i) {
 		if(items.contains(i)) {
 			for (Item item : items) {
 				if(item.equals(i)) {
-					item.activateEffect();
+					item.activateEffect(Main.p,Main.d);
 					items.remove(item);
 					break;
 				}
@@ -20,7 +28,7 @@ public class Inventory {
 		}
 	}
 	public String[] getInventory() {
-		String[] List=new String[items.size()];
+		String[] List=new String[items.size()+1];
 		for(int i=0; i<items.size(); i++) {
 			List[i]=items.get(i).toString();
 		}
