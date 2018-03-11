@@ -20,6 +20,7 @@ public class Player implements Targetable{
 		i.addItem(new MagicalEssence());
 		i.addItem(new MagicalEssence());
 		i.addItem(new PotionOfInvigoration());
+		i.addItem(new PotionOfFortification());
 	}
 	public String[] getInventory() {
 		return i.getInventory();
@@ -32,13 +33,11 @@ public class Player implements Targetable{
 	}
 	public void setFrozen(Freeze f) {
 		frozen=f;
-
+		
 	}
 	public void poisoned() {
-		if(this.poison!=true) {
-			poison=true;
-			SReader.read("You got poisoned!\n");
-		}
+		poison=true;
+		SReader.read("You got poisoned!\n");
 	}
 	public double getArmor() {
 		return armor;
@@ -46,7 +45,7 @@ public class Player implements Targetable{
 	public void setArmor(double armor) {
 		this.armor=armor;
 	}
-
+	
 
 	public void setName() {
 		File f=new File("name.txt");
@@ -67,7 +66,7 @@ public class Player implements Targetable{
 	public void lightAttack(Targetable t) {
 		SReader.read("You launch into a quick attack.\n");
 		if(RNG.roll(80)) {
-			t.takeDamage(20);
+			t.takeDamage(150);
 		}else {
 			SReader.read("But you misssed.\n");
 		}
@@ -75,7 +74,7 @@ public class Player implements Targetable{
 	public void heavyAttack(Targetable t) {
 		SReader.read("You bring down your sword on the dragon with all your might\n");
 		if(RNG.roll(60)) {
-			t.takeDamage(90);
+			t.takeDamage(300);
 		}else {
 			SReader.read("But you misssed.\n");
 		}
@@ -116,8 +115,8 @@ public class Player implements Targetable{
 			}
 
 		}else {
-			HP-=amount*armor;
-			SReader.read("You took "+amount*armor+" damage\n");
+		HP-=amount*armor;
+		SReader.read("You took "+amount*armor+" damage\n");
 		}
 	}
 	@Override
@@ -135,11 +134,11 @@ public class Player implements Targetable{
 		for(int i=0; i<=10; i++) {
 			if(pros>=i) {
 				hp_bar+="#";
-
+				
 			}else {
 				hp_bar+=" ";
 			}
-
+			
 		}
 		hp_bar+="]";
 		return hp_bar;
@@ -150,11 +149,11 @@ public class Player implements Targetable{
 		for(int i=0; i<=10; i++) {
 			if(pros>=i) {
 				MP_bar+="#";
-
+				
 			}else {
 				MP_bar+=" ";
 			}
-
+			
 		}
 		MP_bar+="]";
 		return MP_bar;
@@ -174,6 +173,6 @@ public class Player implements Targetable{
 	@Override
 	public void setMP(int mp) {
 		this.MP=mp;
-
+		
 	}
 }

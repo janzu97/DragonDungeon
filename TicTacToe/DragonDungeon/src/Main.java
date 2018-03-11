@@ -33,6 +33,8 @@ public class Main implements Serializable{
 		p.addSpell(new Inferno());
 		p.addSpell(new Blizzard());
 		p.addSpell(new PoisonCloud());
+		p.addSpell(new HealthtoMana());
+		
 
 		Thread t=new Thread(r);
 		t.start();
@@ -126,7 +128,7 @@ public class Main implements Serializable{
 	}
 	public static void chose_Item() {
 		selectionmade=false;
-		c.setMAX_loc(p.getInventory().length);
+		c.setMAX_loc(p.getInventory().length+1);
 		while(!selectionmade) {
 			try {
 				Thread.sleep(50);
@@ -187,6 +189,22 @@ public class Main implements Serializable{
         p.HP = Integer.parseInt(scanner.nextLine());
         p.MP = Integer.parseInt(scanner.nextLine());
         d.HP=Integer.parseInt(scanner.nextLine());
+        p.poison=Boolean.parseBoolean(scanner.nextLine());
+        d.poison=Boolean.parseBoolean(scanner.nextLine());
+        if(scanner.nextLine().equals("null")) {
+        }else {
+        	d.frozen = new Freeze(Integer.parseInt(scanner.nextLine()));
+        }
+        String[] rigth = scanner.nextLine().split(" ");
+        int i=0;
+        while(i<rigth.length) {
+        	String[] wrong = p.getInventory();
+        	if(!(rigth[i].equals(wrong[i]))) {
+        		p.i.items.remove(i);
+        	}else {
+        		i++;
+        	}
+        }
         scanner.close();
 		}catch(FileNotFoundException f) {
 			
@@ -196,11 +214,20 @@ public class Main implements Serializable{
 	public static void saveGameDataToFile(String file) {   
 		try {
 			FileWriter fw = new FileWriter(file);
-			fw.write(p.HP+"");
-			fw.write("\r\n");
-			fw.write(p.MP+"");
-			fw.write("\r\n");
-			fw.write(d.HP+"");
+			fw.write(p.HP+"\n");
+			fw.write(p.MP+"\n");
+			fw.write(d.HP+"\n");
+			fw.write(""+p.poison+"\n");
+			fw.write(""+d.poison);
+			if(d.frozen != null) {
+	        	fw.write(""+d.frozen.getRounds());
+	        }else {
+	        	fw.write("null\n");
+	        }
+			String[] s = p.getInventory();
+			for(String i : s) {
+				fw.write(" "+i);
+			}
 			fw.close();
 		}catch(IOException e) {
 		}

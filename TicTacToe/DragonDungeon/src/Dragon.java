@@ -102,7 +102,6 @@ public class Dragon implements Targetable{
 	}
 	@Override
 	public void useMana(int a) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -132,7 +131,4 @@ public class Dragon implements Targetable{
 	public void poisoned() {
 		poison=true;
 	}
-	
-	
-
 }

@@ -30,7 +30,7 @@ class MagicalEssence implements Item{
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink a vial of MagicalEssence.\n");
 		if(target.getmaxMp()<target.getMp()+200) {
-			target.setMP(target.getmaxMp());
+			target.setMP(target.getmaxhp());
 			SReader.read("Your mana is now full.\n");
 		}else {
 			target.setMP(target.getMp()+200);
@@ -46,8 +46,11 @@ class MagicalEssence implements Item{
 }
 class PotionOfFortification implements Item{
 	public void activateEffect(Targetable target,Targetable target2) {
-		
-		
+		SReader.read("You drink bottle of mysterious liquid.\n");
+		if(target.getArmor()>0.00) {
+			target.setArmor(target.getArmor()-0.75);
+		}
+		SReader.read("Your armor is now "+ target.getArmor()+"\n");
 	}
 	public String toString() {
 		return"Potion Of Fortification";
@@ -60,12 +63,12 @@ class BagOfSalt implements Item{
 			if(RNG.roll(70)){
 				SReader.read("Dragon eats the bag and it's bloodpressure rises\n");
 				target2.setArmor(target2.getArmor()/2);
-				SReader.read("Dragons armor is now"+ target2.getArmor());
+				SReader.read("Dragons armor is now "+ target2.getArmor()+"\n");
 			}
 			else{
 				SReader.read("Dragon throws the bag bact at you\n");
-				target.setArmor(target.getArmor()*0.70);
-				SReader.read("Your armor is now"+ target.getArmor()+"\n");
+				target.setArmor(target.getArmor()+0.5);
+				SReader.read("Your armor is now "+ target.getArmor()+"\n");
 			}
 		
 	}

@@ -19,19 +19,47 @@ class PoisonCloud implements Attack{
 		}else {
 			target2.takemagicDamage(80);
 		}
+		target.useMana(120);
 		
 	}
 
 	@Override
 	public void GiveDescription() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Poison cloud";
+	}
+	
+}
+class HealthtoMana implements Attack{
+
+	@Override
+	public void activate(Targetable target, Targetable target2){
+		SReader.read("You concentrate and turn your life energy into magic power.\n");
+		if(target.getmaxMp()<target.getMp()+200) {
+			int a = target.getmaxMp()-target.getMp();
+			target.takemagicDamage(a);
+			target.setMP(target.getMp()+a);
+			SReader.read("You turn "+a+" hp into mana.\n");
+		}else {
+			target.takemagicDamage(200);
+			target.setMP(target.getMp()+200);
+			SReader.read("You turn 200 hp into mana.\n");
+		}
+		
+	}
+
+	@Override
+	public void GiveDescription() {
+		
+	}
+
+	@Override
+	public String getName() {
+		return "Health to Mana";
 	}
 	
 }
@@ -41,7 +69,7 @@ class Blizzard implements Attack{
 	public void activate( Targetable target, Targetable target2) {
 		SReader.read("You try to summon a icy storm around the dragon\n");
 		if(RNG.roll(50)) {
-			target2.takemagicDamage(990);
+			target2.takemagicDamage(400);
 			target2.setFrozen(new Freeze(2));
 		}else {	
 			SReader.read("but you failed the spell\n");
@@ -65,17 +93,16 @@ class Inferno implements Attack {
 	public void activate(Targetable target, Targetable target2) {
 		SReader.read("You cast blaze of fire at dragon\n");
 		if(RNG.roll(40)) {
-			target2.takemagicDamage(650);
+			target2.takemagicDamage(350);
 		}else {
 			SReader.read("but you missed\n");
 		}
-		target.useMana(90);
+		target.useMana(100);
 		
 	}
 
 	@Override
 	public void GiveDescription() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -104,7 +131,6 @@ class Invigorating_Shout implements Attack {
 
 	@Override
 	public void GiveDescription() {
-		// TODO Auto-generated method stub
 
 	}
 
