@@ -25,12 +25,15 @@ public class Dragon implements Targetable{
 	}
 	public long getScore() {
 		return MaxHp-HP;
+		//palauttaa pelin pisteet
 	}
 	public double getArmor() {
 		return armor;
+		//palauttaa lohikaarmeen armorin
 	}
 	public void setArmor(double armor) {
 		this.armor=armor;
+		//asettaa lohikaarmeen armorin arvoon
 	}
 	public void Attack(int A_ID) {
 
@@ -50,6 +53,7 @@ public class Dragon implements Targetable{
 
 		}}
 	public void DoRandomAttack(Player t){
+		//Arpoo numeron ja tekee sen mukaisen hyokkauksen jos lohikaarme ei ole jaassa
 		if(frozen == null) {
 			switch(RNG.rint(4)) {
 			case 0 : InfernalFlames(t);
@@ -115,7 +119,7 @@ public class Dragon implements Targetable{
 	}
 	public void setFrozen(Freeze f) {
 		frozen=f;
-		
+		//asettaa lohikaarmeen jaatyneeksi
 	}
 	public int getMp() {
 		return Integer.MAX_VALUE;
@@ -130,6 +134,7 @@ public class Dragon implements Targetable{
 	}
 	public void poisoned() {
 		poison=true;
+		//Asettaa lohikaarmeen myrkytetyksi
 	}
 	@Override
 	public void LowerArmor() {
@@ -142,6 +147,7 @@ public class Dragon implements Targetable{
 		
 	}
 	public String getHpbar() {
+		//plauttaa lohikaarmeen hp palkin
 			String hp_bar="[";
 			double pros=((double)this.HP)/this.MaxHp*10;
 			for(int i=0; i<=10; i++) {
