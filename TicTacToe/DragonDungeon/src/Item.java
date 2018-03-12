@@ -18,7 +18,7 @@ class ItemCreator{
 }
 class PotionOfInvigoration implements Item{
 	@Override
-	//Antaa lis채채 HP:t채
+	//Antaa lisaa HP:ta
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink the potion\n");
 		if(target.getmaxhp()>=300+target.get_HP()) {
@@ -41,7 +41,7 @@ class PotionOfInvigoration implements Item{
 class MagicalEssence implements Item{
 
 	@Override
-	//Antaa lis채채 manaa
+	//Antaa lisaa manaa
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink a vial of MagicalEssence.\n");
 		if(target.getmaxMp()<target.getMp()+200) {
@@ -76,7 +76,7 @@ class PotionOfFortification implements Item{
 }
 class BagOfSalt implements Item{ 
 	@Override
-	//Huonontaa lohik狎rmeen tai pelaajan armoria
+	//Huonontaa lohik채채rmeen tai pelaajan armoria
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You throw a bag of salt at the dragon\n");
 			if(RNG.roll(70)){
