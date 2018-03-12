@@ -17,6 +17,7 @@ public class Main implements Serializable{
 	static boolean selectionmade=false;
 	private static boolean run=true;
 	static Dragon d=new Dragon();
+	//Peliloop on täällä
 	public static void main(String[] args) {
 		Runnable r = new Runnable() {
 			public void run() {
@@ -52,9 +53,11 @@ public class Main implements Serializable{
 		saveScore();
 		System.exit(0);
 	}
+	//Palautta pelin lopputuloksen
 	public long getScore(Dragon D) {
 		return D.getScore();
 	}
+	//Luo päävalikon jossa pelaaja voi valita seuraavan toiminnon
 	public static void player_choose() {
 		selectionmade=false;
 		c.setMAX_loc(4);
@@ -83,6 +86,7 @@ public class Main implements Serializable{
 			chose_run();
 		}
 	}
+	// Luo hyökkäysvalikon josta pelaaja voi valita kumpaa käyttää 
 	public static void chose_melee() {
 		selectionmade=false;
 		c.setMAX_loc(3);
@@ -105,6 +109,7 @@ public class Main implements Serializable{
 		break;
 		}
 	}
+	//Luo taikavalikon josta pelaaja voi valita mitä käyttää
 	public static void chose_magic() {
 		selectionmade=false;
 		String[] options= p.getSpellnamesForMenu();
@@ -129,6 +134,7 @@ public class Main implements Serializable{
 			player_choose();
 		}
 	}
+	//Luo itemvalikon jossa pelaaja voi valita mitä hän haluaa käyttää
 	public static void chose_Item() {
 		selectionmade=false;
 		c.setMAX_loc(p.getInventory().length+1);
@@ -148,6 +154,7 @@ public class Main implements Serializable{
 			player_choose();
 		}
 	}
+	//Kysyy pelaajalta aloitetaanko uusi peli vai jatketaanko vanhaa
 	public static void Strt() {
 		selectionmade=false;
 		c.setMAX_loc(2);
@@ -171,6 +178,7 @@ public class Main implements Serializable{
 		
 		}
 	}
+	//Lopetusvalikko jossa pelaaja voi valita haluaako hän tallentaa pelin
 	public static void chose_run() {
 		selectionmade=false;
 		c.setMAX_loc(3);
@@ -195,9 +203,11 @@ public class Main implements Serializable{
 		break;
 		}
 	}
+	//Palauttaa pelaajan
 	public static Player getPlayer() {
 		return p;
 	}
+	//Talentaa pelin lopputuloksen tiedostoon 
 	public static void saveScore() {
 		try {
 		    Files.write(Paths.get("res"+File.separator+"progress"+File.separator+"Scores.txt"), (p.name + d.getScore()).getBytes(), StandardOpenOption.APPEND);
@@ -207,6 +217,7 @@ public class Main implements Serializable{
 		    
 		}
 	}
+	//Jatkaa tallennettua peliä 
 	public static void loadSavedGame(String file) {
 		try {
 		FileInputStream fis = new FileInputStream(file);
@@ -231,6 +242,7 @@ public class Main implements Serializable{
 		}
            
 	}
+	//Tallentaa pelin tilan tiedostoon
 	public static void saveGameDataToFile(String file) {   
 		try {
 			FileWriter fw = new FileWriter(file);
