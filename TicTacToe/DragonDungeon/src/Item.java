@@ -18,7 +18,7 @@ class ItemCreator{
 }
 class PotionOfInvigoration implements Item{
 	@Override
-	//Antaa lisää HP:tä
+	//Antaa lisaa HP:ta
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink the potion\n");
 		if(target.getmaxhp()>=300+target.get_HP()) {
@@ -41,7 +41,7 @@ class PotionOfInvigoration implements Item{
 class MagicalEssence implements Item{
 
 	@Override
-	//Antaa lisää manaa
+	//Antaa lisaa manaa
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink a vial of MagicalEssence.\n");
 		if(target.getmaxMp()<target.getMp()+200) {
