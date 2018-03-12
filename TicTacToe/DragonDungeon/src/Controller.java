@@ -12,6 +12,7 @@ public class Controller extends JPanel implements KeyListener{
 
 	JFrame frame=new JFrame();
 	public void launch() {
+		//Aloittaa Controllerin toiminnan
 		frame.setSize(200, 200);
 		frame.addKeyListener(this);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -21,13 +22,16 @@ public class Controller extends JPanel implements KeyListener{
 
 	}
 	public void setMAX_loc(int val) {
+		//Asettaa maksimin locationin koolle
+		//lisaksi asettaa locationin yhteen
 		loc_MAX=val;
 		location=1;
 	}
 
-
+//muuttaa nappain syotteen liikkeeksi listassa
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
 
 			if(location>1) {
@@ -35,7 +39,7 @@ public class Controller extends JPanel implements KeyListener{
 			}else {
 				location=loc_MAX;
 			}
-			//System.out.println(location);
+			
 		}else if(e.getKeyCode()==KeyEvent.VK_DOWN) {
 
 			if(location<loc_MAX) {
@@ -43,7 +47,7 @@ public class Controller extends JPanel implements KeyListener{
 			}else {
 				location=1;
 			}
-			//System.out.println(location);
+			
 		}else if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 			Main.selectionmade=true;
 		}
@@ -59,6 +63,7 @@ public class Controller extends JPanel implements KeyListener{
 
 	}
 	public int get_Location() {
+		//palauttaa sijainnin controllerissa
 		return location;
 	}
 }
