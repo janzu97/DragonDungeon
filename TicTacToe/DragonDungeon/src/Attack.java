@@ -5,7 +5,7 @@ public interface Attack {
 	public void activate( Targetable target, Targetable target2);
 	public void GiveDescription();
 	public String getName();
-	//Palauttaa hyokkäyksen nimen
+	//Palauttaa hyokkayksen nimen
 }
 class PoisonCloud implements Attack{
 
