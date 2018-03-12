@@ -5,6 +5,7 @@ public interface Item {
 	
 }
 class ItemCreator{
+	//Luo Item olion sen nimen mukaan
 	public static Item getItemByID(String ID) {
 		switch(ID) {
 		case "Bag_Of_Salt": return new BagOfSalt();
@@ -17,6 +18,7 @@ class ItemCreator{
 }
 class PotionOfInvigoration implements Item{
 	@Override
+	//Antaa lisää HP:tä
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink the potion\n");
 		if(target.getmaxhp()>=300+target.get_HP()) {
@@ -30,6 +32,7 @@ class PotionOfInvigoration implements Item{
 	
 		
 	}
+	//Palauttaa olion nimen
 	public String toString() {
 		return "Potion_Of_Invigoration";
 	}
@@ -38,6 +41,7 @@ class PotionOfInvigoration implements Item{
 class MagicalEssence implements Item{
 
 	@Override
+	//Antaa lisää manaa
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink a vial of MagicalEssence.\n");
 		if(target.getmaxMp()<target.getMp()+200) {
@@ -50,12 +54,14 @@ class MagicalEssence implements Item{
 		SReader.read("\n");
 		
 	}
+	//Palauttaa olion nimen
 	public String toString() {
 		return "MagicalEssence";
 	}
 	
 }
 class PotionOfFortification implements Item{
+	// Parantaa pelaajan armoria
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You drink bottle of mysterious liquid.\n");
 		if(target.getArmor()>0.00) {
@@ -63,12 +69,14 @@ class PotionOfFortification implements Item{
 		}
 		SReader.read("Your armor is now "+ target.getArmor()+"\n");
 	}
+	//Palauttaa olion nimen
 	public String toString() {
 		return"Potion_Of_Fortification";
 	}
 }
 class BagOfSalt implements Item{ 
 	@Override
+	//Huonontaa lohikäärmeen tai pelaajan armoria
 	public void activateEffect(Targetable target,Targetable target2) {
 		SReader.read("You throw a bag of salt at the dragon\n");
 			if(RNG.roll(70)){
@@ -83,6 +91,7 @@ class BagOfSalt implements Item{
 			}
 		
 	}
+	//Palauttaa olion nimen
 	public String toString() {
 		return "Bag_Of_Salt";
 	}
