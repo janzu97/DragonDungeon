@@ -3,6 +3,7 @@ public interface Attack {
 
 
 	public void activate( Targetable target, Targetable target2);
+	//activoi hyokkayksen parametreina hyokkayksen kayttaja ja kohde
 	public void GiveDescription();
 	public String getName();
 	//Palauttaa hyokkayksen nimen
@@ -35,7 +36,7 @@ class PoisonCloud implements Attack{
 	
 }
 class Stoneskin implements Attack{
-
+	//Hyokkays joka nostaa armoria
 	@Override
 	public void activate(Targetable target, Targetable target2) {
 		SReader.read("You focus and tense your entire body. Your skin becomes hard as stone.\n");
@@ -55,7 +56,7 @@ class Stoneskin implements Attack{
 	}
 }
 class BurningAcid implements Attack{
-
+//Hyokkaus joka tekee vahinkoa ja pienentaa vihollisen armoria
 	@Override
 	public void activate(Targetable target, Targetable target2) {
 			SReader.read("You used burning acid\n");
@@ -76,7 +77,7 @@ class BurningAcid implements Attack{
 	}
 }
 class HealthtoMana implements Attack{
-
+	//hyokkaus joka muuttaa elamaa manaksi
 	@Override
 	public void activate(Targetable target, Targetable target2){
 		SReader.read("You concentrate and turn your life energy into magic power.\n");
@@ -105,6 +106,7 @@ class HealthtoMana implements Attack{
 	
 }
 class Blizzard implements Attack{
+	//hyokkays joka tekee vahinkoa ja jaadyttaa vihollisen
 	String name="Blizzard";
 	@Override
 	public void activate( Targetable target, Targetable target2) {
@@ -129,7 +131,7 @@ class Blizzard implements Attack{
 
 }
 class Inferno implements Attack {
-
+	//Hyokkays joka tekee vahinkoa mahdollisuus menna ohi.
 	@Override
 	public void activate(Targetable target, Targetable target2) {
 		SReader.read("You cast blaze of fire at dragon\n");
@@ -158,6 +160,7 @@ class Invigorating_Shout implements Attack {
 
 	@Override
 	public void activate(Targetable target, Targetable target2) {
+		//parantaa kayttajaa 990
 		SReader.read("You feel adrenalin rushing through your veins,\n");
 		if(target.getmaxhp()>=990+target.get_HP()) {
 			target.takemagicDamage(-990);
