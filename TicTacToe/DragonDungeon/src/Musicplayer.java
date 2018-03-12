@@ -8,7 +8,7 @@ public class Musicplayer {
 
 
 	public static void playSong() {
-
+	//soittaa musiikkia
 		Runnable r = new Runnable() {
 			public void run() {
 				AudioClip sc = new AudioClip(Paths.get("res\\bgm\\suspense.wav").toUri().toString());
