@@ -34,15 +34,15 @@ public class Player implements Targetable{
 	public String[] getInventory() {
 		return i.getInventory();
 	}
-	//Luo Uuden pelaaja olion jonka Inventory annetaan parametrina 
+	//Luo uuden pelaaja olion jonka Inventory annetaan parametrina 
 	public Player(Inventory I) {
 		this.i=I;
 	}
-	// Lisää Loitsun loitsulistalle 
+	// Lisää loitsun loitsulistalle 
 	public void addSpell(Attack a){
 		Spells.add(a);
 	}
-	//Jäädyttää pelaajan
+	//Jaadyttaa pelaajan
 	public void setFrozen(Freeze f) {
 		frozen=f;
 		
@@ -61,7 +61,7 @@ public class Player implements Targetable{
 		this.armor=armor;
 	}
 	
-
+	//asettaa pelaajalle nimen
 	public void setName() {
 		File f=new File("name.txt");
 		Scanner sc;
@@ -79,7 +79,7 @@ public class Player implements Targetable{
 	public String getname() {
 		return name;
 	}
-	//Vahingoittaa lohikäärmettä 
+	//Vahingoittaa lohikaarmetta 
 	public void lightAttack(Targetable t) {
 		SReader.read("You launch into a quick attack.\n");
 		if(RNG.roll(80)) {
@@ -88,7 +88,7 @@ public class Player implements Targetable{
 			SReader.read("But you misssed.\n");
 		}
 	}
-	//Vahingoitaa lohikäärmettä enemmän
+	//Vahingoitaa lohikaarmetta enemman
 	public void heavyAttack(Targetable t) {
 		SReader.read("You bring down your sword on the dragon with all your might\n");
 		if(RNG.roll(60)) {
@@ -111,7 +111,7 @@ public class Player implements Targetable{
 		return a;
 
 	}
-	//Palauttaa palauttaa loutsu valikon  
+	//palauttaa loutsu valikon  
 	public String[] getSpellnamesForMenu() {
 		String[] a=new String[Spells.size()+1];
 		for(int i=0; i<Spells.size(); i++) {
@@ -127,7 +127,7 @@ public class Player implements Targetable{
 		return this.MAX_HP;
 	}
 	@Override
-	//Antaa vahinkoa fyysisestä hyökkäyksestä
+	//Antaa vahinkoa fyysisesta hyokkayksesta
 	public void takeDamage(int amount) {
 		if(poison) {
 			HP-=amount*armor*2;
@@ -143,7 +143,7 @@ public class Player implements Targetable{
 		}
 	}
 	@Override
-	//Antaa vahinkoa maagisesta hyökkäyksestä
+	//Antaa vahinkoa maagisesta hyokkayksesta
 	public void takemagicDamage(int amount) {
 		HP=HP-amount;
 	}
@@ -156,7 +156,7 @@ public class Player implements Targetable{
 			SReader.read("pelaaja's armor can't go any higher.\n");
 		}
 	}
-	//Piirtää HP palkin
+	//Piirtaa HP palkin
 	public String getHpbar() {
 		String hp_bar="[";
 		double pros=(HP*10.0)/MAX_HP;
@@ -172,7 +172,7 @@ public class Player implements Targetable{
 		hp_bar+="]";
 		return hp_bar;
 	}
-	//Piirtää MP palkin
+	//Piirtaa MP palkin
 	public String getMPbar() {
 		String MP_bar="[";
 		double pros=MP*10.0/Max_mp;
@@ -189,7 +189,7 @@ public class Player implements Targetable{
 		return MP_bar;
 	}
 	@Override
-	//Vähentää manaa parametrin verran
+	//Vahentaa manaa parametrin verran
 	public void useMana(int a) {
 		MP-=a;
 	}
