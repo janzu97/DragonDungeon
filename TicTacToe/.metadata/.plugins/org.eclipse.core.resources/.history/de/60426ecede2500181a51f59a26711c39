@@ -66,7 +66,7 @@ public class Main implements Serializable{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			SReader.update("Dragon HP"+d.getHpbar()+"\n"+p.name+" HP "+p.getHpbar()+"\n"+p.name+" MP "+p.getMPbar()+"\n"+SReader.GenerateMenu(options,c));
+			SReader.update(p.name+" HP "+p.getHpbar()+"\n"+p.name+" MP "+p.getMPbar()+"\n"+SReader.GenerateMenu(options,c));
 			
 		}
 		if(c.get_Location()==1) {
@@ -94,7 +94,7 @@ public class Main implements Serializable{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			SReader.update(SReader.GenerateMenu(options,c));
+			SReader.update(d.getHpbar()+SReader.GenerateMenu(options,c));
 		}
 		switch(c.get_Location()) {
 		case 1 : p.heavyAttack(d);

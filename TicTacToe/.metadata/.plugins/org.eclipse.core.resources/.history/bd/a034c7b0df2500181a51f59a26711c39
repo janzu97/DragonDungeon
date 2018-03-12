@@ -143,7 +143,7 @@ public class Dragon implements Targetable{
 	}
 	public String getHpbar() {
 			String hp_bar="[";
-			double pros=((double)this.HP)/this.MaxHp*10;
+			double pros=(HP*10.0)/this.MaxHp;
 			for(int i=0; i<=10; i++) {
 				if(pros>=i) {
 					hp_bar+="#";
