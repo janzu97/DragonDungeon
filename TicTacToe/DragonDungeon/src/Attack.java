@@ -5,7 +5,7 @@ public interface Attack {
 	public void activate( Targetable target, Targetable target2);
 	public void GiveDescription();
 	public String getName();
-
+	//Palauttaa hyökkäyksen nimen
 }
 class PoisonCloud implements Attack{
 
@@ -177,6 +177,7 @@ class Invigorating_Shout implements Attack {
 
 	@Override
 	public String getName() {
+		
 		return "Invigorating shout";
 	}
 
