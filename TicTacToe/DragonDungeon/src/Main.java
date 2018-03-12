@@ -57,7 +57,7 @@ public class Main implements Serializable{
 	public long getScore(Dragon D) {
 		return D.getScore();
 	}
-	//Luo päävalikon jossa pelaaja voi valita seuraavan toiminnon
+	//Luo paavalikon jossa pelaaja voi valita seuraavan toiminnon
 	public static void player_choose() {
 		selectionmade=false;
 		c.setMAX_loc(4);
@@ -86,7 +86,7 @@ public class Main implements Serializable{
 			chose_run();
 		}
 	}
-	// Luo hyökkäysvalikon josta pelaaja voi valita kumpaa käyttää 
+	// Luo hyokkaysvalikon josta pelaaja voi valita kumpaa käyttaa 
 	public static void chose_melee() {
 		selectionmade=false;
 		c.setMAX_loc(3);
@@ -109,7 +109,7 @@ public class Main implements Serializable{
 		break;
 		}
 	}
-	//Luo taikavalikon josta pelaaja voi valita mitä käyttää
+	//Luo taikavalikon josta pelaaja voi valita mita kayttaa
 	public static void chose_magic() {
 		selectionmade=false;
 		String[] options= p.getSpellnamesForMenu();
@@ -134,7 +134,7 @@ public class Main implements Serializable{
 			player_choose();
 		}
 	}
-	//Luo itemvalikon jossa pelaaja voi valita mitä hän haluaa käyttää
+	//Luo itemvalikon jossa pelaaja voi valita mita han haluaa kayttaa
 	public static void chose_Item() {
 		selectionmade=false;
 		c.setMAX_loc(p.getInventory().length+1);
@@ -178,7 +178,7 @@ public class Main implements Serializable{
 		
 		}
 	}
-	//Lopetusvalikko jossa pelaaja voi valita haluaako hän tallentaa pelin
+	//Lopetusvalikko jossa pelaaja voi valita haluaako han tallentaa pelin
 	public static void chose_run() {
 		selectionmade=false;
 		c.setMAX_loc(3);
@@ -217,7 +217,7 @@ public class Main implements Serializable{
 		    
 		}
 	}
-	//Jatkaa tallennettua peliä 
+	//Jatkaa tallennettua pelia
 	public static void loadSavedGame(String file) {
 		try {
 		FileInputStream fis = new FileInputStream(file);
