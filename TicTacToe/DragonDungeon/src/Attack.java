@@ -9,7 +9,7 @@ public interface Attack {
 	//Palauttaa hyokkayksen nimen
 }
 class PoisonCloud implements Attack{
-
+	//Hyokkays joka tekee vahinkoa ja myrkyttaa
 	@Override
 	public void activate(Targetable target, Targetable target2) {
 		SReader.read("You create some poisonous mist.\n");
