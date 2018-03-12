@@ -34,6 +34,47 @@ class PoisonCloud implements Attack{
 	}
 	
 }
+class Stoneskin implements Attack{
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+		SReader.read("You focus and tense your entire body. Your skin becomes hard as stone.\n");
+		target.ArmorUp();
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Stone skin";
+	}
+}
+class BurningAcid implements Attack{
+
+	@Override
+	public void activate(Targetable target, Targetable target2) {
+			SReader.read("You used burning acid\n");
+			target2.takemagicDamage(200);
+			target2.LowerArmor();
+	}
+
+	@Override
+	public void GiveDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Burning acid";
+	}
+}
 class HealthtoMana implements Attack{
 
 	@Override
@@ -59,7 +100,7 @@ class HealthtoMana implements Attack{
 
 	@Override
 	public String getName() {
-		return "Health to Mana";
+		return "Blood Pact";
 	}
 	
 }

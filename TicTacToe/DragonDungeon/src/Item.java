@@ -4,6 +4,17 @@ public interface Item {
 	public String toString();
 	
 }
+class ItemCreator{
+	public static Item getItemByID(String ID) {
+		switch(ID) {
+		case "Bag_Of_Salt": return new BagOfSalt();
+		case "Potion_Of_Fortification": return new PotionOfFortification();
+		case "Potion_Of_Invigoration": return new PotionOfInvigoration();
+		case "MagicalEssence": return new MagicalEssence();
+		default: return new BagOfSalt();
+		}
+	}
+}
 class PotionOfInvigoration implements Item{
 	@Override
 	public void activateEffect(Targetable target,Targetable target2) {
@@ -20,7 +31,7 @@ class PotionOfInvigoration implements Item{
 		
 	}
 	public String toString() {
-		return "Potion Of Invigiration";
+		return "Potion_Of_Invigoration";
 	}
 	
 }
@@ -53,7 +64,7 @@ class PotionOfFortification implements Item{
 		SReader.read("Your armor is now "+ target.getArmor()+"\n");
 	}
 	public String toString() {
-		return"Potion Of Fortification";
+		return"Potion_Of_Fortification";
 	}
 }
 class BagOfSalt implements Item{ 
@@ -73,7 +84,7 @@ class BagOfSalt implements Item{
 		
 	}
 	public String toString() {
-		return "Bag Of Salt";
+		return "Bag_Of_Salt";
 	}
 	
 }

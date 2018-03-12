@@ -22,6 +22,12 @@ public class Player implements Targetable{
 		i.addItem(new PotionOfInvigoration());
 		i.addItem(new PotionOfFortification());
 	}
+	public void SetInventory(String[] rigth){
+		this.i=new Inventory();
+		for(String s : rigth) {
+			i.addItem(ItemCreator.getItemByID(s));
+		}
+	}
 	public String[] getInventory() {
 		return i.getInventory();
 	}
@@ -123,10 +129,13 @@ public class Player implements Targetable{
 	public void takemagicDamage(int amount) {
 		HP=HP-amount;
 	}
-	public void NIS(){
-		if(armor>0.125)
+	public void ArmorUp(){
+		if(armor>0.125) {
 			armor=this.armor/2;
-
+			SReader.read("pelaaja's armor was raised.\n");
+		}else {
+			SReader.read("pelaaja's armor can't go any higher.\n");
+		}
 	}
 	public String getHpbar() {
 		String hp_bar="[";
@@ -174,5 +183,14 @@ public class Player implements Targetable{
 	public void setMP(int mp) {
 		this.MP=mp;
 		
+	}
+	@Override
+	public void LowerArmor() {
+		if(armor<6) {
+			armor=armor*2;
+			SReader.read("pelaaja lowered their armor.\n");
+		}else {
+			SReader.read("pelaaja's armor can't go any lower.\n");
+		}
 	}
 }

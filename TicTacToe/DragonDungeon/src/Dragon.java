@@ -131,4 +131,23 @@ public class Dragon implements Targetable{
 	public void poisoned() {
 		poison=true;
 	}
+	@Override
+	public void LowerArmor() {
+		if(armor>0.125) {
+			armor=this.armor/2;
+			SReader.read("Dragons armor was lowered.");
+		}else {
+			SReader.read("Dragons armor can't go any lower.");
+		}
+		
+	}
+	@Override
+	public void ArmorUp() {
+		if(armor<20) {
+			armor=armor*2;
+			SReader.read("Dragon's raised their armor.");
+		}else {
+			SReader.read("Dragon's armor can't go any higher.");
+		}
+	}
 }

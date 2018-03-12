@@ -6,7 +6,8 @@ abstract interface Targetable {
 	
 	public int getmaxhp();
 	public int get_HP();
-	
+	public void LowerArmor();
+	public void ArmorUp();
 	public void setArmor(double armor);
 	public double getArmor();
 

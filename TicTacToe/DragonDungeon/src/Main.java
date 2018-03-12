@@ -25,7 +25,6 @@ public class Main implements Serializable{
 			}
 		};
 		
-			loadSavedGame("res"+File.separator+"progress"+File.separator+"GameProgress.txt");
 		
 		Musicplayer.playSong();
 		p.setName();
@@ -34,17 +33,21 @@ public class Main implements Serializable{
 		p.addSpell(new Blizzard());
 		p.addSpell(new PoisonCloud());
 		p.addSpell(new HealthtoMana());
-		
+		p.addSpell(new BurningAcid());
+		p.addSpell(new Stoneskin());
 
 		Thread t=new Thread(r);
 		t.start();
-		SReader.read(SReader.ReadFile(new File("res"+File.separator+"dialogue"+File.separator+"Opening.txt")));
-		SReader.read(SReader.ReadFile(new File("res"+File.separator+"dialogue"+File.separator+"BattleOP.txt")));
+		Strt();
 		do{
 			player_choose();
 			d.DoRandomAttack(p);
 			
 		}while (d.get_HP()>0 && p.get_HP()>0 && run==true);
+		if(p.get_HP()>0 && d.get_HP()<=0) {
+			SReader.read(SReader.ReadFile(new File("res"+File.separator+"dialogue"+File.separator+"BattleED.txt")));
+			System.exit(0);
+		}
 		SReader.read("\nGame over");
 		saveScore();
 		System.exit(0);
@@ -145,6 +148,29 @@ public class Main implements Serializable{
 			player_choose();
 		}
 	}
+	public static void Strt() {
+		selectionmade=false;
+		c.setMAX_loc(2);
+		while(!selectionmade) {
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			SReader.update(SReader.GenerateMenu(new String[]{"New Game","Load Game"},c));
+
+		}
+		switch(c.get_Location()) {
+		case 1 : SReader.read(SReader.ReadFile(new File("res"+File.separator+"dialogue"+File.separator+"Opening.txt")));
+		SReader.read(SReader.ReadFile(new File("res"+File.separator+"dialogue"+File.separator+"BattleOP.txt")));
+		;
+		break;
+		case 2 : loadSavedGame("res"+File.separator+"progress"+File.separator+"GameProgress.txt");
+		break;
+		
+		}
+	}
 	public static void chose_run() {
 		selectionmade=false;
 		c.setMAX_loc(3);
@@ -185,26 +211,20 @@ public class Main implements Serializable{
 		try {
 		FileInputStream fis = new FileInputStream(file);
         Scanner scanner = new Scanner(fis);
-      
+        p.armor=Double.parseDouble(scanner.nextLine());
+        d.armor=Double.parseDouble(scanner.nextLine());
         p.HP = Integer.parseInt(scanner.nextLine());
         p.MP = Integer.parseInt(scanner.nextLine());
         d.HP=Integer.parseInt(scanner.nextLine());
         p.poison=Boolean.parseBoolean(scanner.nextLine());
         d.poison=Boolean.parseBoolean(scanner.nextLine());
-        if(scanner.nextLine().equals("null")) {
+        String frez=scanner.nextLine();
+        if(frez.equals("")) {
         }else {
-        	d.frozen = new Freeze(Integer.parseInt(scanner.nextLine()));
+        	d.frozen = new Freeze(Integer.parseInt(frez));
         }
         String[] rigth = scanner.nextLine().split(" ");
-        int i=0;
-        while(i<rigth.length) {
-        	String[] wrong = p.getInventory();
-        	if(!(rigth[i].equals(wrong[i]))) {
-        		p.i.items.remove(i);
-        	}else {
-        		i++;
-        	}
-        }
+        p.SetInventory(rigth);
         scanner.close();
 		}catch(FileNotFoundException f) {
 			
@@ -214,20 +234,28 @@ public class Main implements Serializable{
 	public static void saveGameDataToFile(String file) {   
 		try {
 			FileWriter fw = new FileWriter(file);
+			fw.write(p.armor+"\n");
+			fw.write(d.armor+"\n");
 			fw.write(p.HP+"\n");
 			fw.write(p.MP+"\n");
 			fw.write(d.HP+"\n");
 			fw.write(""+p.poison+"\n");
-			fw.write(""+d.poison);
+			fw.write(""+d.poison+"\n");
 			if(d.frozen != null) {
-	        	fw.write(""+d.frozen.getRounds());
+	        	fw.write(""+d.frozen.getRounds()+"\n");
 	        }else {
-	        	fw.write("null\n");
+	        	fw.write("\n");
 	        }
 			String[] s = p.getInventory();
+			if(s.length>0) {
+				String items1="";
 			for(String i : s) {
-				fw.write(" "+i);
+				items1+=i+" ";
+				
 			}
+			
+			fw.write(items1.substring(0, items1.length()-1));
+			}else fw.write("");
 			fw.close();
 		}catch(IOException e) {
 		}

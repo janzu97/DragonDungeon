@@ -1,4 +1,0 @@
-
-public interface Targetable {
-	void takeDamage(int amount);
-}

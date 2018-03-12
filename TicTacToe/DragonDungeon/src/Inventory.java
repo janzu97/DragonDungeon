@@ -28,7 +28,7 @@ public class Inventory {
 		}
 	}
 	public String[] getInventory() {
-		String[] List=new String[items.size()+1];
+		String[] List=new String[items.size()];
 		for(int i=0; i<items.size(); i++) {
 			List[i]=items.get(i).toString();
 		}
@@ -37,7 +37,7 @@ public class Inventory {
 	public String[] getInventoryforMenu() {
 		String[] List=new String[items.size()+1];
 		for(int i=0; i<items.size(); i++) {
-			List[i]=items.get(i).toString();
+			List[i]=items.get(i).toString().replaceAll("_", " ");;
 		}
 		List[items.size()]="BACK";
 		return List;
