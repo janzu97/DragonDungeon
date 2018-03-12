@@ -189,7 +189,7 @@ public class Player implements Targetable{
 		return MP_bar;
 	}
 	@Override
-	Vähentää manaa parametrin verran
+	//Vähentää manaa parametrin verran
 	public void useMana(int a) {
 		MP-=a;
 	}
