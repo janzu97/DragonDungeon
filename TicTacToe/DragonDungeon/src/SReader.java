@@ -8,6 +8,7 @@ public class SReader {
 	String Readabletext;
 
 	public static String ReadFile(File f) {
+		//Lukee tiedosto string olioksi
 		String text = "";
 		try {
 			Scanner sc=new Scanner(f);
@@ -24,6 +25,7 @@ public class SReader {
 
 	}
 	public static void read(String txt) {
+		//lukee tiedoston merkki kerrallaa soittataen jokaisen merkin kohdalla aaniefektin merkkien tulostus nopeus riippuu merkista
 		txt=txt.replaceAll("pelaaja", Main.getPlayer().getname());
 		long nanotime1=System.nanoTime();
 		long nanotime2=0;
@@ -59,6 +61,7 @@ public class SReader {
 		}
 	}
 	public static String GenerateMenu(String[] options,Controller c) {
+		//luo valikon parametrina annetuista vaihtoehdoista jota ohjaa parametrina annettu ohjain
 		String result="";
 		for(int i=1; i<=options.length; i++) {
 			result+=options[i-1];
@@ -71,6 +74,7 @@ public class SReader {
 		return result;
 	}
 	public static void update(String nframe) {
+		//tyhjentaa konsoli ruudun ja tulostaa annetun String oion 
 		System.out.println("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
 		System.out.println(nframe);
 	}
